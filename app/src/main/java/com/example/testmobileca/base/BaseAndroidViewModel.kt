@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 abstract class BaseAndroidViewModel(
     application: Application,
-    protected val schedulerProvider: SchedulerProvider,
+    schedulerProvider: SchedulerProvider,
 ) : AndroidViewModel(application) {
 
     private val job = SupervisorJob()

@@ -55,9 +55,6 @@ private fun <T> RegisterBaseObservers(
     viewModel: T,
     scaffoldState: ScaffoldState
 ) where T : BaseAndroidViewModel {
-    val coroutineScope = rememberCoroutineScope()
-
-    val snackHostState = remember { scaffoldState.snackbarHostState }
 
     val showProgressBar by viewModel.progressBar.collectAsState(false)
 

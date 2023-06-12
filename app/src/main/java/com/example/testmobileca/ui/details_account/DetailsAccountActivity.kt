@@ -1,11 +1,9 @@
 package com.example.testmobileca.ui.details_account
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.example.testmobileca.base.BaseActivity
-import com.example.testmobileca.utils.ExtraKeys
 import com.example.testmobileca.utils.Navigation
 import kotlinx.coroutines.InternalCoroutinesApi
 

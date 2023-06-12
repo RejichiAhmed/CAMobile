@@ -3,7 +3,6 @@ package com.example.testmobileca.data.useCase
 import com.example.testmobileca.data.model.Bank
 import com.example.testmobileca.data.repository.abs.BankRepository
 import com.example.testmobileca.utils.Resource
-import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

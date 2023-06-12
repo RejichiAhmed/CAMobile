@@ -27,7 +27,6 @@ import com.example.testmobileca.ui.components.CATopBar
 import com.example.testmobileca.ui.components.ProgressBar
 import com.example.testmobileca.utils.timestampToDate
 
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun DetailsAccountScreen(
@@ -70,6 +69,7 @@ fun BodyContent(
 
         val account = viewModel.account.collectAsState()
         val operations = viewModel.operations.collectAsState()
+
         Box {
             Column {
                 Box(

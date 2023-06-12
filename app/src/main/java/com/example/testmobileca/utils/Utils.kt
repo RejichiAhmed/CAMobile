@@ -22,7 +22,7 @@ fun collapsableSections(banks: State<List<Bank>>): ArrayList<CollapsableSection>
     for (bank in banks.value) {
         CollapsableSection(
             bank.name,
-            bank.accounts.sortedBy { it.label }
+            bank.accounts.sortedByDescending { it.label }
         ).let {
             collapsableSectionList.add(
                 it
@@ -34,7 +34,7 @@ fun collapsableSections(banks: State<List<Bank>>): ArrayList<CollapsableSection>
 
 
 fun timestampToDate(timestamp: Long): String {
-    val dateFormat = "dd/MM/yyyy" // Example date format
+    val dateFormat = DATE_FORMAT // Example date format
     val date =  Date(timestamp)
     val format = SimpleDateFormat(dateFormat, Locale.getDefault())
     return format.format(date)

@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -58,6 +59,8 @@ fun BodyContent(
 
         val otherBanks = viewModel.otherBanks.collectAsState()
 
+        val state = viewModel.stateBanks.value
+
         Box {
             Column {
                 Row(
@@ -74,6 +77,7 @@ fun BodyContent(
                             .padding(start = 16.dp)
                     )
                 }
+                if (!state.isLoading) {
                 Row(
                     modifier = Modifier
                         .background(color = Color.LightGray)
@@ -107,6 +111,19 @@ fun BodyContent(
                     )
                 }
                 CollapsableLazyColumn(collapsableSections(otherBanks),viewModel)
+
+                }
+
+                if (state.error.isNotBlank()) {
+                    Text(
+                        text = state.error,
+                        color = MaterialTheme.colors.error,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                    )
+                }
             }
         }
 

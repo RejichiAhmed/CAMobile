@@ -17,8 +17,6 @@ import kotlin.reflect.KClass
 @AndroidEntryPoint
 abstract class BaseActivity : ComponentActivity() {
 
-
-
     @InternalCoroutinesApi
     protected fun registerBaseObservers(viewModel: ViewModel) {
         if (viewModel is BaseAndroidViewModel) {
@@ -53,16 +51,6 @@ abstract class BaseActivity : ComponentActivity() {
     @CallSuper
     open fun navigate(navigationTo: Navigation) {
         //..
-    }
-
-    /**
-     * startActivity to class
-     * @param kClass activity to navigate to
-     * @param shouldFinish should finish current activity
-     */
-    fun navigateToActivity(kClass: KClass<out Activity>, shouldFinish: Boolean = false) {
-        startActivity(Intent(this, kClass.java))
-        if (shouldFinish) finish()
     }
 
 }

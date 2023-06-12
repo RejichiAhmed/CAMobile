@@ -67,11 +67,17 @@ class MyAccountsViewModel @Inject constructor(
 
                     _otherBanks.value = result.data?.filter { it.isCA == "0" } ?: emptyList()
 
+                    _stateBanks.value = BankListState(
+                        isLoading = false
+                    )
                     isLoading(false)
                 }
                 is Resource.Error -> {
                     _stateBanks.value = BankListState(
                         error = result.message ?: "An unexpected error occurred"
+                    )
+                    _stateBanks.value = BankListState(
+                        isLoading = false
                     )
                     isLoading(false)
                 }
