@@ -1,13 +1,13 @@
 # CAMobile
 
-It contains the same overall functionality.
+It contains overall functionality.
 
 # Features:
 1. Kotlin
 1. MVVM
+1. JetPackCompose (UI Screens)
 1. Retrieve Network Data from API (REST API)
-1. Database caching
-1. Monitoring Network Connectivity
+1. Database Room
 1. Use cases
 1. Datastore (New Shared Preferences)
 1. Kotlin Flow
