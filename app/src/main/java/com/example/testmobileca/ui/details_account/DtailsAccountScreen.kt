@@ -1,9 +1,7 @@
 package com.example.testmobileca.ui.details_account
 
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,20 +14,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import com.example.testmobileca.R
 import com.example.testmobileca.base.BaseScreen
 import com.example.testmobileca.data.model.Operation
-import com.example.testmobileca.ui.accounts.BodyContent
-import com.example.testmobileca.ui.accounts.MyAccountsViewModel
 import com.example.testmobileca.ui.components.CATopBar
-import com.example.testmobileca.ui.components.CollapsableLazyColumn
 import com.example.testmobileca.ui.components.ProgressBar
-import com.example.testmobileca.utils.collapsableSections
 import com.example.testmobileca.utils.timestampToDate
 
 
@@ -41,7 +36,9 @@ fun DetailsAccountScreen(
     BaseScreen(viewModel = viewModel,
         topBar = {
             CATopBar(
-                title = "Mes comptes", titleColor = Color.Blue, leftIcon = Icons.Filled.ArrowBack
+                title = stringResource(R.string.my_accounts_title),
+                titleColor = Color.Blue,
+                leftIcon = Icons.Filled.ArrowBack
             ) { viewModel.onBackClicked() }
         }) {
 
@@ -62,7 +59,6 @@ fun DetailsAccountScreen(
 }
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BodyContent(
     viewModel: DetailsAccountViewModel
@@ -128,10 +124,13 @@ fun OperationItemList(operation: Operation) {
             .fillMaxWidth()
             .background(color = Color.White)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Column {
                 Text(
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 10.dp),
                     text = operation.title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -140,7 +139,7 @@ fun OperationItemList(operation: Operation) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier.padding(start = 16.dp, top = 10.dp, bottom = 10.dp),
                     text = timestampToDate(operation.date.toLong()),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -151,7 +150,7 @@ fun OperationItemList(operation: Operation) {
             }
 
             Text(
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(end = 16.dp),
                 text = operation.amount + "€",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,

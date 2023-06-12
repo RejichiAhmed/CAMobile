@@ -9,6 +9,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
@@ -16,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -24,6 +30,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.widget.ImageViewCompat
 import com.example.testmobileca.ui.accounts.MyAccountsViewModel
 import com.example.testmobileca.data.model.Account
 import com.example.testmobileca.utils.calculatedTotalBalance
@@ -58,7 +65,7 @@ fun CollapsableLazyColumn(
             }
             if (!collapsed) {
                 items(dataItem.rows) { row ->
-                    BankListItem(row, viewModel)
+                    AccountListItem(row, viewModel)
                     Divider()
                 }
             }
@@ -73,7 +80,7 @@ fun headerSubList(title: String, collapsed: Boolean, totalBalance: Float) {
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
-            .height(35.dp)
+            .wrapContentHeight()
             .background(
                 Color.White
             )
@@ -86,16 +93,15 @@ fun headerSubList(title: String, collapsed: Boolean, totalBalance: Float) {
             horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.Start),
             modifier = Modifier
                 .wrapContentWidth()
-                .height(19.dp)
+                .wrapContentHeight()
                 .background(Color.Transparent)
                 .alpha(1f)
         ) {
 
-
             Text(
-                text = "$title - $totalBalance €",
+                text = title,
                 textAlign = TextAlign.Center,
-                fontSize = 14.sp,
+                fontSize = 18.sp,
                 textDecoration = TextDecoration.None,
                 letterSpacing = 0.sp,
                 maxLines = 1,
@@ -104,36 +110,52 @@ fun headerSubList(title: String, collapsed: Boolean, totalBalance: Float) {
                     .wrapContentWidth()
                     .alpha(1f),
                 color = Color.Black,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Normal,
                 fontStyle = FontStyle.Normal,
             )
+
+
         }
 
         Row(
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.Start),
             modifier = Modifier
-                .width(16.dp)
-                .height(16.dp)
+                .wrapContentWidth()
+                .wrapContentHeight()
                 .background(Color.Transparent)
                 .padding(start = 0.dp, top = 0.dp, end = 0.dp, bottom = 0.dp)
                 .alpha(1f)
 
         ) {
 
+            Text(
+                text = "$totalBalance €",
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                textDecoration = TextDecoration.None,
+                letterSpacing = 0.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .wrapContentWidth()
+                    .alpha(1f),
+                color = Color.LightGray,
+                fontWeight = FontWeight.Normal,
+                fontStyle = FontStyle.Normal,
+            )
+
             Box(
                 modifier = Modifier
-                    .width(16.dp)
-                    .height(16.dp)
+                    .width(20.dp)
+                    .height(20.dp)
                     .background(Color.Transparent)
                     .alpha(1f)
             ) {
                 Icon(
-                    painter = if (collapsed) painterResource(id = com.example.testmobileca.R.drawable.ic_expand) else painterResource(
-                        id = com.example.testmobileca.R.drawable.ic_collapse
-                    ),
+                    imageVector =  if (collapsed) Icons.Filled.KeyboardArrowDown else Icons.Filled.KeyboardArrowUp,
                     contentDescription = "",
-                    tint = Color.White,
+                    tint = Color.LightGray,
                 )
             }
         }

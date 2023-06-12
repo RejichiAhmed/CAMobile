@@ -22,7 +22,7 @@ fun collapsableSections(banks: State<List<Bank>>): ArrayList<CollapsableSection>
     for (bank in banks.value) {
         CollapsableSection(
             bank.name,
-            bank.accounts
+            bank.accounts.sortedBy { it.label }
         ).let {
             collapsableSectionList.add(
                 it

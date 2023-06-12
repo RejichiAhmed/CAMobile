@@ -6,6 +6,7 @@ import com.example.testmobileca.data.model.Bank
 import com.example.testmobileca.data.repository.abs.BankRepository
 import com.example.testmobileca.data.retrofit.APIClient
 import com.example.testmobileca.utils.DataStoreManager
+import com.google.gson.Gson
 import javax.inject.Inject
 
 class BankRepositoryImp @Inject constructor(
@@ -15,8 +16,10 @@ class BankRepositoryImp @Inject constructor(
 ) : BaseRepository(apiClient, dataStoreManager, database), BankRepository {
 
     override suspend fun getBanksAndCache(): List<Bank> {
-        return apiClient.getBanks().banks
-
+        val gson = Gson()
+        val response = apiClient.getBanks()
+        val json = response.string()
+        return gson.fromJson(json, Array<Bank>::class.java).toList()
     }
 
 }

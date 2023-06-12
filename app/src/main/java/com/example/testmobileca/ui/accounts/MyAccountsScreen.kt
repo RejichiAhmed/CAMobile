@@ -9,10 +9,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.testmobileca.R
 import com.example.testmobileca.base.BaseScreen
 import com.example.testmobileca.ui.components.CollapsableLazyColumn
 import com.example.testmobileca.ui.components.ProgressBar
@@ -64,7 +66,7 @@ fun BodyContent(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Mes Comptes",
+                        text = stringResource(R.string.my_accounts_title),
                         fontSize = 44.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
@@ -78,7 +80,7 @@ fun BodyContent(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Credit Agricole",
+                        text = stringResource(R.string.section_title_ca),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Normal,
                         color = Color.Gray,
@@ -96,7 +98,7 @@ fun BodyContent(
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Autres Banques",
+                        text = stringResource(R.string.section_title_others),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Normal,
                         color = Color.Gray,

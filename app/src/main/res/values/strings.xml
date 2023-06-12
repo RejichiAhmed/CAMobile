@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TestMobileCA</string>
     <string name="title_activity_details_account">DetailsAccountActivity</string>
+    <string name="my_accounts_title">Mes comptes</string>
+    <string name="section_title_ca">Credit Agricole</string>
+    <string name="section_title_others">Autres Banques</string>
 </resources>
